@@ -15,7 +15,8 @@ function CoupangAd() {
         trackingCode: "AF3411794",
         width: "680",
         height: "140",
-        tsource: ""
+        tsource: "",
+        element: "coupang-ad"
       });
     `;
     document.body.appendChild(script2);
@@ -41,11 +42,11 @@ function CoupangAd() {
           border: "1px solid #ddd",
         }}
       >
-        이 포스팅은 <strong>쿠팡 파트너스 활동</strong>의 일환으로, 이에 따른{" "}
-        <strong>일정액의 수수료</strong>를 제공받습니다.
+        이 포스팅은 쿠팡 파트너스 활동의 일환으로, 이에 따른 일정액의 수수료를
+        제공받습니다.
       </div>
 
-      <div>{/* 광고 스크립트로 자동 렌더링됨 */}</div>
+      <div id="coupang-ad" />
     </div>
   );
 }
