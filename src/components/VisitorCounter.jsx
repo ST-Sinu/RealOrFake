@@ -4,7 +4,7 @@ function VisitorCounter() {
   const [count, setCount] = useState(null);
 
   useEffect(() => {
-    fetch("https://api.countapi.xyz/hit/St-Sinu/RearOrFake")
+    fetch("https://api.countapi.xyz/hit/st-sinu/RearOrFake")
       .then((res) => res.json())
       .then((data) => setCount(data.value));
   }, []);
