@@ -2,7 +2,7 @@ import { useState } from "react";
 import "./App.css";
 import Header from "./components/Header";
 import Body from "./components/Body";
-import VisitorCounter from "./VisitorCounter";
+import VisitorCounter from "./components/VisitorCounter";
 
 function App() {
   const [score, setScore] = useState(0);
