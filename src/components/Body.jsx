@@ -112,13 +112,12 @@ function Body({ score, currentRound, setScore, setCurrentRound }) {
               <img src={imagePair[1]} alt="이미지 2" className="game-img" />
             </div>
           </div>
-
+          <CoupangAd />
           <div className="controls">
             <button className="reset1">
               <a href="/">처음으로</a>
             </button>
           </div>
-          <CoupangAd />
 
           {showFeedback && (
             <AnswerFeedback
