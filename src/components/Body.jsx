@@ -117,6 +117,7 @@ function Body({ score, currentRound, setScore, setCurrentRound }) {
               <a href="/">처음으로</a>
             </button>
           </div>
+          <CoupangAd />
 
           {showFeedback && (
             <AnswerFeedback

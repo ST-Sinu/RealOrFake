@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./ResultScreen.css";
+import CoupangAd from "./components/CoupangAd";
 
 function ShareInfoModal({ shareUrl, shareText, onClose }) {
   return (
@@ -116,6 +117,7 @@ function ResultScreen({ score, lives, isClear, onRestart }) {
           onClose={() => setShowShareInfo(false)}
         />
       )}
+      <CoupangAd />
     </div>
   );
 }
