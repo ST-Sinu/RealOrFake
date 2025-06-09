@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./ResultScreen.css";
 
 function ShareInfoModal({ shareUrl, shareText, onClose }) {
@@ -30,53 +30,44 @@ function ResultScreen({ score, lives, isClear, onRestart }) {
   const baseUrl = window.location.href;
   const shareText = `나는 ${score}점을 기록했어요! 당신도 AI를 이길 수 있나요? 👁️`;
 
-  // 모바일 및 웹에서 공통으로 쓸 수 있는 공유 URL 생성
-  const getShareUrl = (platform) => {
-    switch (platform) {
-      case "kakao":
-        // 카카오톡 모바일 공유 URL
-        return `https://sharer.kakao.com/talk/friends/picker/link?url=${encodeURIComponent(
-          baseUrl
-        )}`;
-      case "facebook":
-        // 페이스북 모바일 공유 URL
-        return `https://m.facebook.com/sharer.php?u=${encodeURIComponent(
-          baseUrl
-        )}`;
-      case "twitter":
-        // 트위터 모바일 공유 URL + 텍스트 포함
-        return `https://mobile.twitter.com/compose/tweet?url=${encodeURIComponent(
-          baseUrl
-        )}&text=${encodeURIComponent(shareText)}`;
-      case "instagram":
-        // 인스타그램은 공식적인 URL 공유 없고, 앱 열기 권장
-        // 인스타그램 앱이 설치되어 있으면 앱 열기, 없으면 인스타그램 웹으로 이동
-        return "instagram://app"; // 앱 열기 시도 (모바일만)
-      default:
-        return baseUrl;
+  useEffect(() => {
+    if (window.Kakao && !window.Kakao.isInitialized()) {
+      window.Kakao.init("195abc7cf6ba2d1d92953e9a03afea39"); // 여기에 실제 JS 키 넣기
     }
-  };
+  }, []);
 
-  const handleShareClick = (platform) => {
-    const url = getShareUrl(platform);
+  const handleShareClick = () => {
+    if (!window.Kakao || !window.Kakao.isInitialized()) {
+      alert("카카오톡 공유를 사용할 수 없습니다.");
+      return;
+    }
 
-    setCurrentShareUrl(url);
-    setCurrentShareText(
-      platform === "twitter"
-        ? shareText
-        : "(공유 텍스트는 앱에서 자동 입력됩니다)"
-    );
+    window.Kakao.Share.sendDefault({
+      objectType: "feed",
+      content: {
+        title: "AI 위협 게임 결과",
+        description: shareText,
+        imageUrl:
+          "https://k.kakaocdn.net/dn/Q2iNx/btqgeRgV54P/VLdBs9cvyn8BJXB3o7N8UK/kakaolink40_original.png",
+        link: {
+          mobileWebUrl: baseUrl,
+          webUrl: baseUrl,
+        },
+      },
+      buttons: [
+        {
+          title: "웹에서 보기",
+          link: {
+            mobileWebUrl: baseUrl,
+            webUrl: baseUrl,
+          },
+        },
+      ],
+    });
+
+    setCurrentShareUrl(baseUrl);
+    setCurrentShareText(shareText);
     setShowShareInfo(true);
-
-    // 모바일 앱 호출 (인스타그램) 시도
-    if (platform === "instagram") {
-      // 인스타그램 앱 호출 후 fallback으로 웹 인스타그램 열기
-      setTimeout(() => {
-        window.open("https://www.instagram.com/", "_blank");
-      }, 1500);
-
-      window.location.href = url;
-    }
   };
 
   const handleCopyLink = () => {
@@ -105,29 +96,8 @@ function ResultScreen({ score, lives, isClear, onRestart }) {
           <strong>가족과 친구도 AI 위협에 노출되어 있는지 확인하기!</strong>
         </p>
 
-        <button className="share-btn" onClick={() => handleShareClick("kakao")}>
-          카카오톡
-        </button>
-
-        <button
-          className="share-btn"
-          onClick={() => handleShareClick("instagram")}
-        >
-          인스타그램
-        </button>
-
-        <button
-          className="share-btn"
-          onClick={() => handleShareClick("facebook")}
-        >
-          페이스북
-        </button>
-
-        <button
-          className="share-btn"
-          onClick={() => handleShareClick("twitter")}
-        >
-          X (트위터)
+        <button className="share-btn" onClick={handleShareClick}>
+          카카오톡 공유하기
         </button>
 
         <button className="share-btn" onClick={handleCopyLink}>

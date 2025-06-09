@@ -23,8 +23,12 @@ function Body({ score, currentRound, setScore, setCurrentRound }) {
   const loadNewImages = () => {
     const round = currentRound;
     const isLeftReal = Math.random() < 0.5;
-    const realPath = `/${round}/real.jpg`;
-    const fakePath = `/${round}/fake.jpg`;
+    const realPath = `https://raw.githubusercontent.com/ST-Sinu/RealOrFake/main/public/${String(
+      round
+    )}/real.jpg`;
+    const fakePath = `https://raw.githubusercontent.com/ST-Sinu/RealOrFake/main/public/${String(
+      round
+    )}/fake.jpg`;
 
     if (isLeftReal) {
       setImagePair([realPath, fakePath]);

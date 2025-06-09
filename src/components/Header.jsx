@@ -8,7 +8,7 @@ function Header() {
 
   return (
     <header className="header">
-      <a href="/">
+      <a href="https://st-sinu.github.io/RealOrFake/">
         <h1>REAL OR FAKE : 진짜를 찾아라</h1>
       </a>
       <div className="series">
