@@ -24,8 +24,9 @@ function Body({ score, currentRound, setScore, setCurrentRound }) {
   const loadNewImages = () => {
     const round = currentRound;
     const isLeftReal = Math.random() < 0.5;
-    const realPath = `/${round}/real.jpg`;
-    const fakePath = `/${round}/fake.jpg`;
+    const roundStr = String(round);
+    const realPath = `/${roundStr}/real.jpg`;
+    const fakePath = `/${roundStr}/fake.jpg`;
 
     if (isLeftReal) {
       setImagePair([realPath, fakePath]);
