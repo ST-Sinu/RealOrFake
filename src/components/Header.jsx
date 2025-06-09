@@ -13,11 +13,11 @@ function Header() {
 
   return (
     <header className="header">
-      <a href="https://st-sinu.github.io/RealOrFake/">
+      <a href="https://st-sinu.github.io/">
         <h1>REAL OR FAKE : 진짜를 찾아라</h1>
       </a>
       <div className="series">
-        <a href="https://st-sinu.github.io/RealOrFake/" onClick={handleNow}>
+        <a href="https://st-sinu.github.io/" onClick={handleNow}>
           1탄
         </a>
         <a href="/" onClick={handleComingSoon}>
