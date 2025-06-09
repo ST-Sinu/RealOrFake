@@ -3,6 +3,7 @@ import "./Body.css";
 import ResultScreen from "./ResultScreen";
 import AnswerFeedback from "./AnswerFeedback";
 import imageSources from "../data/imageSource";
+import CoupangAd from "./CoupandAd";
 
 function Body({ score, currentRound, setScore, setCurrentRound }) {
   const [imagePair, setImagePair] = useState([]);

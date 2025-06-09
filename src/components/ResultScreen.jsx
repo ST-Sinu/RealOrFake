@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./ResultScreen.css";
-import CoupangAd from "./components/CoupangAd";
+import CoupangAd from "./CoupangAd";
 
 function ShareInfoModal({ shareUrl, shareText, onClose }) {
   return (
