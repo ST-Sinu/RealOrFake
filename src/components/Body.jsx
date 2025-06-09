@@ -93,7 +93,9 @@ function Body({ score, currentRound, setScore, setCurrentRound }) {
         <>
           <div className="score-board">
             <p>
-              두 사진 중 <strong>AI로 만든 사진이 아닌</strong> 것을 고르시오
+              두 사진 중에서 AI가 만든 사진이 아닌 진짜 사진을 고르세요.
+              <br />
+              AI 이미지 감별 능력을 키워보세요!
               <br />
               (Choose the <strong>non-AI-generated</strong> of the two photos)
             </p>
