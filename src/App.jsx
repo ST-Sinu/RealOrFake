@@ -18,6 +18,7 @@ function App() {
         setCurrentRound={setCurrentRound}
       />
       <CoupangAd />
+      <SamsungBanner />
     </div>
   );
 }
